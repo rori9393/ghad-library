@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>مكتبة الغد | تسجيل الزيارات</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <!-- رأس الصفحة -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="brand">
+                <div class="logo-box">
+                  
+                    <img 
+                  class="college-logo"
+                  src="./img/logo.png"
+                  alt="شعار كلية الغد" >
+                  
+                  <span class="logo-fallback" hidden></span>
+                </div>
+
+                <div>
+                    <h1>مكتبة الغد</h1>
+                    <p>كلية الغد للعلوم الطبية التطبيقية - فرع جدة </p>
+                </div>
+            </a>
+
+            <nav class="tabs" aria-label="التنقل الرئيسي">
+                <button
+                    type="button"
+                    id="tab-student"
+                    class="tab active"
+                    aria-pressed="true"
+                >
+                     تسجيل الزيارة
+                </button>
+
+                <a href="books.html" class="tab">
+                     معرض الكتب
+                </a>
+
+                <button
+                    type="button"
+                    id="tab-librarian"
+                    class="tab"
+                    aria-pressed="false"
+                >
+                     مسؤولة المكتبة
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- صفحة الطالب -->
+        <section id="view-student" class="panel student-panel">
+            <div class="intro">
+                <span class="badge"> ركن تسجيل الزوار</span>
+
+                <h2>أهلاً بك في مكتبة الغد</h2>
+
+                <p>
+                    سجّل بياناتك واحتياجاتك، ثم وقّع لإكمال تسجيل الزيارة.
+                </p>
+
+                <a href="books.html" class="text-link">
+                    تصفّح الكتب الموجودة في المكتبة ←
+                </a>
+            </div>
+
+            <form id="student-form">
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="student-name">
+                            اسم الطالب:
+                        </label>
+
+                        <input
+                            type="text"
+                            id="student-name"
+                            maxlength="160"
+                            placeholder="مثال: أحمد محمد علي"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="student-id">
+                            الرقم الأكاديمي / التدريبي:
+                        </label>
+
+                        <input
+                            type="text"
+                            id="student-id"
+                            maxlength="40"
+                            placeholder="مثال: 442100000"
+                            autocomplete="off"
+                            required
+                        >
+                    </div>
+                </div>
+
+
+<!-- قائمة الغرض من الزيارة -->
+<div class="field">
+    <label for="visit-purpose">
+        الغرض من الزيارة:
+    </label>
+
+    <select id="visit-purpose" required>
+        <option value="" selected disabled>اختر الغرض من الزيارة</option>
+        <option value="reading">قراءة</option>
+        <option value="borrowing">استعارة</option>
+        <option value="other">شيء آخر</option>
+    </select>
+</div>
+
+<!-- تظهر عند اختيار استعارة أو شيء آخر -->
+<div id="need-details-box" class="field" hidden>
+    <label id="need-details-label" for="need-details">
+        تفاصيل الاحتياج:
+    </label>
+
+    <textarea
+        id="need-details"
+        rows="3"
+        maxlength="1900"
+        disabled
+    ></textarea>
+</div>
+
+
+<!-- يجمع الاختيار والتفاصيل ليحفظهما كود التسجيل الحالي -->
+<input type="hidden" id="student-needs" value="">
+                <div class="field">
+                    <div class="signature-heading">
+                        <label for="sig-canvas">
+                            التوقيع الإلكتروني للزيارة:
+                        </label>
+
+                        <button
+                            type="button"
+                            id="clear-signature"
+                            class="danger-button"
+                        >
+                            مسح التوقيع
+                        </button>
+                    </div>
+
+                    <div class="signature-box">
+                        <canvas
+                            id="sig-canvas"
+                            aria-label="مساحة رسم التوقيع"
+                        ></canvas>
+
+                        <div
+                            id="sig-placeholder"
+                            class="signature-placeholder"
+                        >
+                             وقّع هنا بإصبعك أو قلم الشاشة أو الماوس
+                        </div>
+                    </div>
+                </div>
+
+                <button
+                    type="submit"
+                    id="submit-button"
+                    class="primary-button"
+                >
+                    إرسال وحفظ تسجيل الزيارة
+                </button>
+            </form>
+        </section>
+
+        <!-- لوحة مسؤولة المكتبة -->
+        <section id="view-librarian" hidden>
+            <div class="panel">
+                <div class="dashboard-header">
+                    <div>
+                        <h2> مسؤولة المكتبة</h2>
+
+                        <p class="muted">
+                            سجلات الطلاب وأوقات الزيارة والتوقيعات
+                        </p>
+                    </div>
+
+                    <div class="dashboard-actions">
+                        <span id="record-count" class="badge">
+                            0 سجلات
+                        </span>
+
+                        <button
+                            type="button"
+                            id="clear-records"
+                            class="danger-button"
+                        >
+                            حذف كافة السجلات
+                        </button>
+                    </div>
+                </div>
+
+                <label for="search-input">
+                    البحث في السجلات:
+                </label>
+
+                <input
+                    type="search"
+                    id="search-input"
+                    placeholder="ابحث بالاسم أو الرقم أو الاحتياج..."
+                >
+            </div>
+
+            <div
+                id="records-container"
+                class="records"
+                aria-live="polite"
+            ></div>
+
+            <div id="no-records" class="panel empty-state" hidden>
+                <div class="empty-icon">📭</div>
+
+                <h3 id="empty-title">
+                    لا توجد سجلات زيارات حتى الآن
+                </h3>
+
+                <p id="empty-description" class="muted">
+                    ستظهر هنا بيانات الطلاب بعد تسجيل الزيارة.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- رسالة نجاح التسجيل -->
+    <div
+        id="success-modal"
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="success-title"
+        hidden
+    >
+        <div class="modal-content">
+            <div class="modal-icon"></div>
+
+            <h2 id="success-title">تم تسجيل زيارتك بنجاح!</h2>
+
+            <p>
+                تم حفظ بياناتك وتوقيعك ووقت الزيارة في هذا المتصفح.
+            </p>
+
+            <button
+                type="button"
+                id="close-success"
+                class="primary-button"
+            >
+                تسجيل زيارة جديدة
+            </button>
+        </div>
+    </div>
+
+    <footer>
+        <p>مكتبة الغد © 2026</p>
+        <p>كلية الغد للعلوم الطبية التطبيقية</p>
+    </footer>
+</body>
+</html>

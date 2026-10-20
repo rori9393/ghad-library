@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>مكتبة الغد | معرض الكتب</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="brand">
+                <div class="logo-box">
+    <img
+        class="college-logo"
+        src="./img/logo.png"
+        alt="شعار كلية الغد"
+    >
+
+    <span class="logo-fallback" hidden></span>
+</div>
+
+                <div>
+                    <h1>مكتبة الغد</h1>
+                    <p>كلية الغد للعلوم الطبية التطبيقية - فرع جدة </p>
+                </div>
+            </a>
+
+            <nav class="tabs" aria-label="التنقل الرئيسي">
+                <a href="index.html" class="tab">
+                     تسجيل الزيارة
+                </a>
+
+                <a
+                    href="books.html"
+                    class="tab active"
+                    aria-current="page"
+                >
+                     معرض الكتب
+                </a>
+
+                <a href="index.html#librarian" class="tab">
+                     مسؤولة المكتبة
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="books-main">
+        <!-- مقدمة المعرض -->
+        <section class="books-hero">
+            <div>
+                <span class="badge">مكتبة الغد الطبية </span>
+
+                <h2>بين صفحات الكتب<br>تبدأ رحلة المعرفة</h2>
+
+            </div>
+
+            <div class="hero-book" aria-hidden="true">
+                <span>مكتبة<br>الغد</span>
+                <small>اقرأ • تعلّم • ارتقِ</small>
+            </div>
+        </section>
+
+        <!-- إحصائيات الكتب -->
+        <section class="book-stats" aria-label="إحصائيات المعرض">
+            <div class="stat-card">
+                <span>عناوين الكتب</span>
+                <strong id="titles-count">0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>إجمالي النسخ</span>
+                <strong id="copies-count">0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>التصنيفات</span>
+                <strong id="categories-count">0</strong>
+            </div>
+        </section>
+
+        <!-- البحث والتصفية -->
+        <section class="panel books-toolbar">
+            <div>
+                <label for="book-search">ابحث عن كتاب:</label>
+
+                <input
+                    type="search"
+                    id="book-search"
+                    placeholder=" Psychiatric-Mental Health Nursing " > 
+            </div>
+
+            <div>
+                <label for="book-category">التصنيف:</label>
+
+                <select id="book-category">
+                    <option value="">جميع التصنيفات</option>
+                </select>
+            </div>
+        </section>
+
+        <div class="gallery-heading">
+            <h2>الكتب الموجودة في المكتبة</h2>
+            <span id="books-result-count" class="badge">0 كتاب</span>
+        </div>
+
+        <p class="muted">
+            العناوين والأعداد بيانات تجريبية قابلة للتعديل.
+            العدد المعروض هو إجمالي النسخ، والأغلفة تصميمية.
+        </p>
+
+        <!-- يضيف JavaScript بطاقات الكتب هنا -->
+        <section
+            id="books-grid"
+            class="books-grid"
+            aria-label="معرض الكتب"
+            aria-live="polite"
+        ></section>
+
+        <div id="no-books" class="panel empty-state" hidden>
+            <div class="empty-icon">🔍</div>
+            <h3>لا توجد كتب تطابق بحثك</h3>
+            <p class="muted">جرّبي كلمة أخرى أو غيّري التصنيف.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>مكتبة الغد © 2026</p>
+        <p>كلية الغد للعلوم الطبية التطبيقية</p>
+    </footer>
+</body>
+</html>
